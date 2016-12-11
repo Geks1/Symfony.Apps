@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{asset('bundles/email/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{asset('bundles/email/css/bootstrap-responsive.css') }}">
+  <link rel="stylesheet" href="{{asset('bundles/email/css/style.css') }}">
+  <script src="{{asset('bundles/email/js/jquery.js') }}"></script>
+  <script src="{{asset('bundles/email/js/bootstrap.js') }}"></script>
+  <style>
+      h5, h4 {
+          text-align: center;
+      }
+      
+      form {
+          width: 50%;
+          margin-left: 25%;
+      }
+      button {
+         width: 130px;
+           margin-left: 38%;
+      }
+      
+  </style>
+</head>
+<body>  
+
+
+<form class="form-signin" method ="POST" action="{{path('email_email_signup')}}">
+            <h4 class="form-signin-heading" >Įveskite el. pašto adresą: </h4>
+            <input type="email" id="text" name="username"   class="input-xlarge"  placeholder="Email address" data-trigger="change" data-required="true" data-type="email">
+            <button class="btn btn-large btn-primary" type="submit">Tikrinti</button>
+        </form>
+    
+    
+    </body>
+</html>

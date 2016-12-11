@@ -1,0 +1,7 @@
+email_email_homepage:
+    path:     /Email
+    defaults: { _controller: EmailEmailBundle:Default:index }
+
+email_email_signup:
+    path:     /signup
+    defaults: { _controller: EmailEmailBundle:Default:signup }

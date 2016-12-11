@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{asset('bundles/email/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{asset('bundles/email/css/bootstrap-responsive.css') }}">
+  <link rel="stylesheet" href="{{asset('bundles/email/css/style.css') }}">
+  <script src="{{asset('bundles/email/js/jquery.js') }}"></script>
+  <script src="{{asset('bundles/email/js/bootstrap.js') }}"></script>
+  <style>
+      h5, h4 {
+          text-align: center;
+      }
+      
+      form {
+          width: 50%;
+          margin-left: 25%;
+      }
+      button {
+         
+      }
+      .btn1 {
+          margin-left: 10%;
+          width: 130px;
+      } 
+      #email{
+          height: 130px; 
+      }
+      
+      .textarea {
+          width: 100%;
+      }
+      label {
+    margin-top: 5px;
+}
+      
+  </style>
+
+
+</head>
+<body>
+    
+    <script>
+        $(function() {
+
+  $(document).on('change', ':file', function() {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  $(document).ready( function() {
+      $(':file').on('fileselect', function(event, numFiles, label) {
+
+          var input = $(this).parents('.input-group').find(':text'),
+              log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+          if( input.length ) {
+              input.val(log);
+          } else {
+              if( log ) alert(log);
+          }
+
+      });
+  });
+  
+});
+        
+        </script>
+{%block container %}
+{%endblock%}
+    <div class="container ">
+    <div class="row">
+  <h5>Elektroninio pašto adresų paieškos sistema tekste.</h5>
+  <br><br>
+ 
+
+  
+
+   <form class="form-signin" method ="POST" action="{{path('email_email_homepage')}}" data-validate="parsley" enctype="multipart/form-data">
+            <h4 class="form-signin-heading" >Įveskite vieną ar kelis el. pašto adresus, įterpkite tekstą arba pridėkite txt failą su tekstu: </h4>
+            <!-- <input type="text" id="email" class="form-control input-block-level" name="username" placeholder="Įkelti tekstą." data-trigger="change" data-required="true" data-type="email"> -->
+            <textarea name="username" placeholder="Įkelti tekstą." class="textarea form-control" rows="6" id="email"></textarea>
+            <br>
+            <button name="tikrinti" class="btn1 btn btn-large btn-primary" type="submit">Tikrinti</button>
+             <button name="eksportuoti" class="btn btn-large btn-primary" type="submit">Eksportuoti į Failą</button>
+            
+            
+
+             
+             <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-large btn-primary  ">
+                        Pridėti Failą <input type="file" style="display: none;" multiple>
+                    </span>
+                </label>
+                 
+                <input type="text" class="form-control" readonly>
+            </div>
+<!-- <a href="{{path('email_email_signup')}}" >Pridėti</a>  <button name="prideti" class="btn btn-large btn-primary">Pridėti Failą</button>
+           -->
+        </form>
+    </div>
+</div>
+           
+       
+           
+           
+           
+{% if name is defined%}
+    <div class="alert-info fade in">
+        <strong>{{name}}</strong>
+    </div>
+{%endif%}
+
+        
+        <br><br><br>
+  <div class="container" style="margin-top: 10px">
+
+    <div id="" class="form-inline" role="grid">
+        <div class="row">
+            <div class="span8">
+            </div>
+            <div class="span4">
+                <div class="dataTables_filter" id="example_filter">
+                    <label>Paieška: <input type="text" class="search-query"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th>ID</th>               
+                <th>El. Paštas</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
+            <tr>
+                <td>Test</td>
+                <td>Test</td>
+            </tr>
+        <tbody>
+    </table>
+      <div class="row">
+          <div class="span4">
+              <div class="pagination">
+                  <ul>
+                      <li class="prevdisabled"><a href="#"> <- Provious</a></li>
+                      <li class="active"><a href="">1</a></li>
+                      <li class="active"><a href="">2</a></li>
+                      <li class="active"><a href="">3</a></li>
+                      <li class="next"><a href="#">Next -> </a></li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
+    
+</div>
+{%block javascripts %}
+ {%endblock%}      
+</body>
+</html>
